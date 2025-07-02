@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_schema_attribute">
+    <sys_schema_attribute action="INSERT_OR_UPDATE">
+        <applies_to>COLUMN</applies_to>
+        <applies_to_description/>
+        <column_on_table display_value="Priority" element="u_priority" name="u_medication">43dca26c93aa2610ec38b2ddfaba10db</column_on_table>
+        <column_type display_value="String">747127c1bf3320001875647fcf0739e0</column_type>
+        <description/>
+        <label>Ignore Control</label>
+        <name>u_ignore</name>
+        <on_table display_value="Medication" name="u_medication">c6b3135c93aae210ec38b2ddfaba1046</on_table>
+        <read_roles/>
+        <remove_roles/>
+        <sys_class_name>sys_schema_attribute</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 05:22:24</sys_created_on>
+        <sys_id>b01d2a6c93aa2610ec38b2ddfaba10ed</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Ignore Control</sys_name>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_schema_attribute_b01d2a6c93aa2610ec38b2ddfaba10ed</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 05:22:24</sys_updated_on>
+        <update_roles/>
+        <value_description/>
+        <value_type display_value="True/False">17d3ba81bf3320001875647fcf0739dc</value_type>
+    </sys_schema_attribute>
+</record_update>

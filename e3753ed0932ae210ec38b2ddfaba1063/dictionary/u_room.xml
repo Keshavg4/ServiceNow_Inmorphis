@@ -14,7 +14,7 @@
                 <element inactive_on_update="false" label="New" sequence="0" value="new"/>
             </choice>
         </element>
-        <element attributes="edge_encryption_enabled=true,dependent=ward_id" label="Room Number" mandatory="true" max_length="40" name="u_room_number" type="string"/>
+        <element attributes="edge_encryption_enabled=true,dependent=ward_id" dependent="u_ward_id" dependent_on_field="u_ward_id" label="Room Number" mandatory="true" max_length="40" name="u_room_number" type="string" use_dependent_field="true"/>
         <element attributes="encode_utf8=false" label="Patient ID" mandatory="true" max_length="32" name="u_patient_id" reference="u_patient_record" type="reference"/>
         <index name="index">
             <element name="sys_class_name"/>
