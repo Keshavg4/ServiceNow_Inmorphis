@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_process_flow">
+    <sys_process_flow action="DELETE">
+        <active>true</active>
+        <condition table="u_appointment">u_statis=cancelled^EQ<item display_value="Cancelled" endquery="false" field="u_statis" goto="false" newquery="false" operator="=" or="false" value="cancelled"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
+        <description/>
+        <label>Cancelled</label>
+        <name>Appointment</name>
+        <order>50</order>
+        <sys_class_name>sys_process_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-01 17:37:52</sys_created_on>
+        <sys_id>9b3ccc2093eee210ec38b2ddfaba10c9</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Appointment</sys_name>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_process_flow_9b3ccc2093eee210ec38b2ddfaba10c9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-01 17:39:00</sys_updated_on>
+        <table>u_appointment</table>
+    </sys_process_flow>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</application>
+        <file_path/>
+        <instance_id>e1370087eb90e25056eafddacad0cd22</instance_id>
+        <instance_name>dev302965</instance_name>
+        <name>sys_process_flow_9b3ccc2093eee210ec38b2ddfaba10c9</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_process_flow"><sys_process_flow action="INSERT_OR_UPDATE"><active>true</active><condition table="u_appointment">u_statis=cancelled^EQ<item display_value="Cancelled" endquery="false" field="u_statis" goto="false" newquery="false" operator="=" or="false" value="cancelled"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></condition><description/><label>Cancelled</label><name>Appointment</name><order>50</order><sys_class_name>sys_process_flow</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2025-07-01 17:37:52</sys_created_on><sys_id>9b3ccc2093eee210ec38b2ddfaba10c9</sys_id><sys_mod_count>4</sys_mod_count><sys_name>Appointment</sys_name><sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package><sys_policy/><sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope><sys_update_name>sys_process_flow_9b3ccc2093eee210ec38b2ddfaba10c9</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2025-07-01 17:39:00</sys_updated_on><table>u_appointment</table></sys_process_flow></record_update>]]></payload>
+        <payload_hash>-1328810243</payload_hash>
+        <record_name>Appointment</record_name>
+        <reverted_from/>
+        <source>cf49ba5c932ae210ec38b2ddfaba102d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-01 17:39:00</sys_created_on>
+        <sys_id>879c846093eee210ec38b2ddfaba10e8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>197c71215da0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-01 17:39:00</sys_updated_on>
+        <type>Flow Formatter</type>
+        <update_guid>0f9c84602beee210f69fd258cd9a11e7</update_guid>
+        <update_guid_history>0f9c84602beee210f69fd258cd9a11e7:-1328810243,cb8cc020aaeee2105ce61724a432e578:-1482229968,437c8460b4eee210ccfc78cd6466dae3:-49639465,d76c80ecaaaee210cb16d582364b1b93:1914615090,2e5c48ac71aee210a994326463de1788:-576845257</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-01 17:40:22</sys_created_on>
+        <sys_db_object display_value="" name="sys_process_flow">sys_process_flow</sys_db_object>
+        <sys_id>15fa62af9b3b4bd9aa746af97a3cb729</sys_id>
+        <sys_metadata>9b3ccc2093eee210ec38b2ddfaba10c9</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Appointment</sys_name>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_scope_delete display_value="">0c949affe0f24f4b812a8bb39f7208e9</sys_scope_delete>
+        <sys_update_name>sys_process_flow_9b3ccc2093eee210ec38b2ddfaba10c9</sys_update_name>
+        <sys_update_version display_value="sys_process_flow_9b3ccc2093eee210ec38b2ddfaba10c9">879c846093eee210ec38b2ddfaba10e8</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-01 17:40:22</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
