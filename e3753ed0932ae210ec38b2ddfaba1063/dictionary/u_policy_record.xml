@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="2d61db16932e6210ec38b2ddfaba10e5" label="Policy Record" max_length="40" name="u_policy_record" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Holder First Name" mandatory="true" max_length="40" name="u_holder_first_name" type="string"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Policy Record ID" max_length="40" name="u_number" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Covers" max_length="1000" name="u_covers" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Holder Last Name" max_length="40" name="u_holder_last_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Policy Type" mandatory="true" max_length="40" name="u_policy_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Daimond" sequence="2" value="daimond"/>
+                <element inactive_on_update="false" label="Silver" sequence="0" value="silver"/>
+                <element inactive_on_update="false" label="Gold" sequence="1" value="gold"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Policy Number" mandatory="true" max_length="40" name="u_policy_number" type="string"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

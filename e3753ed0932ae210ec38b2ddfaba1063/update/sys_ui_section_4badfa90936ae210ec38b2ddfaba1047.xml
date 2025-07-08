@@ -4,13 +4,13 @@
             <element>u_number</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-07-01 12:00:55</sys_created_on>
-            <sys_id>6a3ffa14936ae210ec38b2ddfaba1078</sys_id>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>96e6031a93ea6210ec38b2ddfaba10e2</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-07-01 12:00:55</sys_updated_on>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>u_last_name</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-07-01 12:00:55</sys_created_on>
-            <sys_id>ee3ffa14936ae210ec38b2ddfaba1078</sys_id>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>92e6031a93ea6210ec38b2ddfaba10e3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-07-01 12:00:55</sys_updated_on>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,69 +32,97 @@
             <element>u_gender</element>
             <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-07-01 12:00:55</sys_created_on>
-            <sys_id>663ffa14936ae210ec38b2ddfaba1079</sys_id>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>1ae6031a93ea6210ec38b2ddfaba10e3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-07-01 12:00:55</sys_updated_on>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_vip</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>9ee6031a93ea6210ec38b2ddfaba10e3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>3</position>
+            <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-07-01 12:00:55</sys_created_on>
-            <sys_id>ea3ffa14936ae210ec38b2ddfaba1079</sys_id>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>16e6031a93ea6210ec38b2ddfaba10e4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-07-01 12:00:55</sys_updated_on>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_first_name</element>
-            <position>4</position>
+            <position>5</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-07-01 12:00:55</sys_created_on>
-            <sys_id>623ffa14936ae210ec38b2ddfaba107a</sys_id>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>9ae6031a93ea6210ec38b2ddfaba10e4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-07-01 12:00:55</sys_updated_on>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_status</element>
-            <position>5</position>
+            <position>6</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-07-01 12:00:55</sys_created_on>
-            <sys_id>e63ffa14936ae210ec38b2ddfaba107a</sys_id>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>12e6031a93ea6210ec38b2ddfaba10e5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-07-01 12:00:55</sys_updated_on>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_date_of_birth</element>
-            <position>6</position>
+            <position>7</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2025-07-01 12:00:55</sys_created_on>
-            <sys_id>6e3ffa14936ae210ec38b2ddfaba107a</sys_id>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>96e6031a93ea6210ec38b2ddfaba10e5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2025-07-01 12:00:55</sys_updated_on>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_priority</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2025-07-07 17:42:21</sys_created_on>
+            <sys_id>1ee6031a93ea6210ec38b2ddfaba10e5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Personal Information" display_value="Personal Information" name="u_patient_record" sys_domain="global" view="Default view">4badfa90936ae210ec38b2ddfaba1047</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2025-07-07 17:42:21</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -112,9 +140,9 @@
             <sys_mod_count>1</sys_mod_count>
             <sys_name>u_patient_record</sys_name>
             <sys_overrides/>
-            <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+            <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
             <sys_policy/>
-            <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+            <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
             <sys_update_name>sys_ui_section_4badfa90936ae210ec38b2ddfaba1047</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2025-07-01 12:00:52</sys_updated_on>

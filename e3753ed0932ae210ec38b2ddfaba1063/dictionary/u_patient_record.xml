@@ -9,6 +9,14 @@
                 <element inactive_on_update="false" label="In Progress" sequence="1" value="in_progress"/>
             </choice>
         </element>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Priority" mandatory="true" max_length="40" name="u_priority" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Low" sequence="0" value="low"/>
+                <element inactive_on_update="false" label="Medium" sequence="1" value="medium"/>
+                <element inactive_on_update="false" label="High" sequence="2" value="high"/>
+            </choice>
+        </element>
+        <element label="VIP" max_length="40" name="u_vip" type="boolean"/>
         <element attributes="encode_utf8=false" label="Doctor" mandatory="true" max_length="32" name="u_doctor" reference="u_doctor" type="reference"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Patient ID" max_length="40" name="u_number" read_only="true" type="string"/>
         <element attributes="edge_encryption_enabled=true,email_client=true" label="Email" mandatory="true" max_length="40" name="u_email" type="string"/>
