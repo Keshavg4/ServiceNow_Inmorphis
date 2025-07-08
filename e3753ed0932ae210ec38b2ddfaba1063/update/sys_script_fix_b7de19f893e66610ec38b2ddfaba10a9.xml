@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>Script3</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var patient=new GlideRecord('u_patient_record');
+patient.addQuery("number","PAT0001027");
+patient.query();
+if(patient.next())
+{
+	var patientid = patient.getValue('sys_id');
+	var med=new GlideRecord('u_medication');
+	med.addQuery("u_patient_id",patientid);
+	med.query();
+	while(med.next())
+	{
+		gs.print("Medication ID:"+med.getDisplayValue('number')+"-------"+med.getValue('u_medication_name')+"------"+med.getValue('u_dosage'));
+	}
+}
+else
+{
+	gs.print("No Medication for the patient.");
+}
+
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 18:17:10</sys_created_on>
+        <sys_id>b7de19f893e66610ec38b2ddfaba10a9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Script3</sys_name>
+        <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_fix_b7de19f893e66610ec38b2ddfaba10a9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 18:17:10</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>b7de19f893e66610ec38b2ddfaba10a9</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 18:17:09</sys_created_on>
+        <sys_id>a7ee153c93e66610ec38b2ddfaba10ad</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 18:17:09</sys_updated_on>
+        <table>sys_script_fix</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

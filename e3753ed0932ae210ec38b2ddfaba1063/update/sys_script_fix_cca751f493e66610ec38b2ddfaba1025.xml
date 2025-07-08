@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>Script1</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var patient = new GlideRecord('u_patient_record'); 
+patient.addQuery('number', 'PAT0001083'); 
+patient.query();
+
+if (patient.next()) {
+    var patientSysId = patient.getValue('sys_id');
+    var appall = new GlideRecord('u_appointment'); 
+    appall.addQuery('u_patient_id', patientSysId); 
+    appall.query();
+
+    while (appall.next()) {
+        gs.print('Appointment Number: ' + appall.getValue('number'));
+		gs.print(appall.getDisplayValue('u_doctor'));
+		gs.print(appall.getValue('u_department'));
+		gs.print(appall.getDisplayValue('u_appointment_date'));
+		
+    }
+
+} else {
+    gs.print('No patient found with ID: PAT0001083');
+}
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 17:45:42</sys_created_on>
+        <sys_id>cca751f493e66610ec38b2ddfaba1025</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Script1</sys_name>
+        <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_fix_cca751f493e66610ec38b2ddfaba1025</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 17:45:42</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>cca751f493e66610ec38b2ddfaba1025</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 17:45:41</sys_created_on>
+        <sys_id>36b71d3493e66610ec38b2ddfaba10e7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 17:45:41</sys_updated_on>
+        <table>sys_script_fix</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

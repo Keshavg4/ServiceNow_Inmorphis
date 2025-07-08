@@ -2,6 +2,7 @@
     <element audit="true" db_object_id="8218579093eae210ec38b2ddfaba109b" label="Doctor" max_length="40" name="u_doctor" type="collection">
         <element attributes="edge_encryption_enabled=true" label="Office Location" mandatory="true" max_length="40" name="u_office_locatio" type="string"/>
         <element label="Contact Number" max_length="40" name="u_contact_number" type="phone_number_e164"/>
+        <element attributes="edge_encryption_enabled=true" label="Office Location" mandatory="true" max_length="500" name="u_office_location" type="string"/>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Doctor ID" max_length="40" name="u_number" read_only="true" type="string"/>
         <element attributes="edge_encryption_enabled=true" choice="1" label="Specialization" mandatory="true" max_length="40" name="u_specialization" type="string">

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>Script2</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var quer="u_statis=scheduled";
+var can=new GlideRecord('u_appointment');
+can.addEncodedQuery(quer);
+can.query();
+
+while(can.next())
+{
+	can.setValue("u_statis","Cancelled");
+	can.update();
+	
+}]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 17:59:00</sys_created_on>
+        <sys_id>8bba9df493e66610ec38b2ddfaba1011</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Script2</sys_name>
+        <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_fix_8bba9df493e66610ec38b2ddfaba1011</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 18:00:12</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>8bba9df493e66610ec38b2ddfaba1011</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 17:59:00</sys_created_on>
+        <sys_id>61ca91b893e66610ec38b2ddfaba1037</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 17:59:00</sys_updated_on>
+        <table>sys_script_fix</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

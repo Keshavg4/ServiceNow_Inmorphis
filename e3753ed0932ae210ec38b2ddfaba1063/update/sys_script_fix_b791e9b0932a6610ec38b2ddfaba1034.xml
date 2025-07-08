@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <before>false</before>
+        <description/>
+        <name>Script4</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var lab=new GlideRecord('u_lab_test');
+lab.addQuery("u_patient_id","470000fc93226610ec38b2ddfaba1070");
+lab.query();
+while(lab.next())
+{
+	gs.print("Test ID:"+lab.getDisplayValue('number')+"-------"+lab.getValue('u_test_type')+"------");
+}
+
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 18:29:03</sys_created_on>
+        <sys_id>b791e9b0932a6610ec38b2ddfaba1034</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Script4</sys_name>
+        <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_fix_b791e9b0932a6610ec38b2ddfaba1034</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 18:29:03</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>b791e9b0932a6610ec38b2ddfaba1034</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-02 18:29:03</sys_created_on>
+        <sys_id>f5a1ad30932a6610ec38b2ddfaba10fb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-02 18:29:03</sys_updated_on>
+        <table>sys_script_fix</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
