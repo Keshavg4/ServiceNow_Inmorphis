@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>global.BillingUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>BillingUtils</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var BillingUtils = Class.create();
+BillingUtils.prototype = {
+    initialize: function() {
+    },
+	//Calculate the total billing amount for a patient.
+	gettotalamount: function(id)
+	{
+		var patientamount = new GlideRecord('u_billing');
+		patientamount.addQuery("u_patient_id",id);
+		patientamount.query();
+		if(patientamount.next())
+		{
+			return patientamount;
+		}
+		else{
+			return "No amount";
+		}
+	},
+	//Check if a billing record is overdue. 
+	getstatus: function(billingid)
+	{
+		var billstatus = new GlideRecord('u_billing');
+		billstatus.addQuery('number',billingid);
+		billstatus.query();
+		if(billstatus.next())
+		{
+			if(billstatus.u_status == "overdue")
+			{
+				return true;
+			}
+			else{
+				return false;
+			}
+
+		}
+		else{
+			return "No Record"
+		}
+	},
+	//Fetch billing details by ID.
+	getbillingdetails: function(billingid)
+	{
+		var details = new GlideRecord('u_billing');
+		details.addQuery('number',billingid);
+		details.query();
+		if(details.next())
+		{
+			return details;
+		}
+		else{
+			return "No Details Found";
+		}
+	},
+	//Fetch billing records by patient ID.
+	getdetailsbypatient: function(patientid)
+	{
+		var details = new GlideRecord('u_billing');
+		details.addQuery('u_patient_id',patientid);
+		details.query();
+		return details;
+	},
+
+    type: 'BillingUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 19:27:01</sys_created_on>
+        <sys_id>7a676cba93226210ec38b2ddfaba1001</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>BillingUtils</sys_name>
+        <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_include_7a676cba93226210ec38b2ddfaba1001</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 19:48:27</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>7a676cba93226210ec38b2ddfaba1001</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 19:27:00</sys_created_on>
+        <sys_id>19786cba93226210ec38b2ddfaba1005</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 19:27:00</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>u_billing</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Billing_BR</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+    var patientbill = new BillingUtils();
+
+    var amount = patientbill.gettotalamount('0214c8f093626610ec38b2ddfaba105e');
+    gs.print(amount.u_total_amount);
+    //gs.print('------------------------------------------------');
+
+
+    var overduestatus = patientbill.getstatus('BLG0001026');
+    gs.print(overduestatus);
+    var overduestatus = patientbill.getstatus('BLG0001029');
+    gs.print(overduestatus);
+    //gs.print('------------------------------------------------');
+
+
+    var records = patientbill.getbillingdetails('BLG0001026');
+    gs.print("Billing ID: " + records.number);
+    gs.print("Patient ID: " + records.u_patient_id.getDisplayValue());
+    gs.print("Total Amount: " + records.u_total_amount);
+    gs.print("Current Status: " + records.u_status);
+    //gs.print('------------------------------------------------');
+
+
+    var details = patientbill.getdetailsbypatient('076000fc93226610ec38b2ddfaba1073');
+    while (details.next()) {
+        gs.print("Billing ID: " + details.number);
+        gs.print("Patient ID: " + details.u_patient_id.getDisplayValue());
+        gs.print("Total Amount: " + details.u_total_amount);
+        gs.print("Current Status: " + details.u_status);
+    }
+
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 19:56:25</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>a02e6c3693626210ec38b2ddfaba10af</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Billing_BR</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_a02e6c3693626210ec38b2ddfaba10af</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 19:56:25</sys_updated_on>
+        <template/>
+        <when>before_display</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=a02e6c3693626210ec38b2ddfaba10af"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>a02e6c3693626210ec38b2ddfaba10af</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 19:56:24</sys_created_on>
+        <sys_id>7f2f6c3693626210ec38b2ddfaba1020</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 19:56:24</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

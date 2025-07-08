@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>u_patient_record</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Patient_BR</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+    // Add your code here
+    var _pat = new PatientUtils();
+    var _patrecord = _pat.fetchpatientdetailbyid('PAT0001093');
+    gs.print("First Name: " + _patrecord.u_first_name);
+    gs.print("Last Name: " + _patrecord.u_last_name);
+    gs.print("Contact Number: " + _patrecord.u_contact_number);
+    gs.print("Email: " + _patrecord.u_email);
+    gs.print('---------------------------------------------------------')
+
+    var _checvip = _pat.checkvip('PAT0001081');
+    gs.print(_checvip);
+    gs.print('---------------------------------------------------------')
+
+    var _patientage = _pat.calage('PAT0001093');
+    gs.print("Age is: " + _patientage);
+    gs.print('---------------------------------------------------------')
+
+    var _patinetAppt = _pat.patientappointment('0214c8f093626610ec38b2ddfaba105e');
+    if (!_patinetAppt.hasNext()) {
+        gs.print("No appointments found for patient.");
+    } else {
+        while (_patinetAppt.next()) {
+            gs.print("Appointment Date: " + _patinetAppt.u_appointment_date);
+            gs.print("Doctor: " + _patinetAppt.u_doctor.getDisplayValue());
+            gs.print("Status: " + _patinetAppt.u_statis);
+            gs.print('-------')
+
+        }
+    }
+    gs.print('---------------------------------------------------------')
+
+    var _med = _pat.patientmedication('0214c8f093626610ec38b2ddfaba105e');
+    if (!_med.hasNext()) {
+        gs.print("No medication found for patient.");
+    } else {
+        while (_med.next()) {
+            gs.print("Medication Name: " + _med.u_medication_name);
+            gs.print("Dosage: " + _med.u_dosage);
+            gs.print("Frequency: " + _med.u_frequency);
+            gs.print('-------')
+
+        }
+    }
+    gs.print('---------------------------------------------------------')
+
+
+    var labtest = _pat.patientlabtest('0214c8f093626610ec38b2ddfaba105e');
+    while (labtest.next()) {
+        gs.print("Patient ID: " + labtest.u_patient_id);
+        gs.print("Test ID: " + labtest.number);
+        gs.print("Schedule Date" + labtest.u_schedule_date);
+        gs.print("Results: " + labtest.u_results);
+        gs.print('-------')
+    }
+    gs.print('---------------------------------------------------------')
+
+    var bill = _pat.patientbillingrecords('0214c8f093626610ec38b2ddfaba105e');
+    while (bill.next()) {
+        gs.print("Patient ID: " + bill.u_patient_id);
+        gs.print("Total Amount: " + bill.u_total_amount);
+        gs.print("Billing ID: " + bill.number);
+        gs.print("Status: " + bill.u_status);
+
+    }
+    gs.print('---------------------------------------------------------')
+
+
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 20:18:38</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>eb1470ba93626210ec38b2ddfaba10f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Patient_BR</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_eb1470ba93626210ec38b2ddfaba10f4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 20:18:38</sys_updated_on>
+        <template/>
+        <when>before_display</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=eb1470ba93626210ec38b2ddfaba10f4"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>eb1470ba93626210ec38b2ddfaba10f4</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 20:18:37</sys_created_on>
+        <sys_id>59443cba93626210ec38b2ddfaba102c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 20:18:37</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

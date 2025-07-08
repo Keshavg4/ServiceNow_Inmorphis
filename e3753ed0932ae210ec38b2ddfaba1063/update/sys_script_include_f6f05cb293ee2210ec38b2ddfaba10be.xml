@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>global.PatientUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>PatientUtils</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var PatientUtils = Class.create();
+PatientUtils.prototype = {
+    initialize: function() {},
+    //Fetch all patient details by patient ID.
+    fetchpatientdetailbyid: function(id) {
+        var patient = new GlideRecord('u_patient_record');
+        patient.addQuery('u_number', id);
+        patient.query();
+        if (patient.next()) {
+            return patient;
+        } else {
+            return "Record not found";
+        }
+    },
+    //Check if a patient is a VIP. 
+    checkvip: function(id) {
+        var patient = new GlideRecord('u_patient_record');
+        patient.addQuery('u_number', id);
+        patient.query();
+        if (patient.next()) {
+            if (patient.u_vip == 'true' || patient.u_vip == true) {
+                return "Patient is VIP";
+            } else {
+                return "Patient is not VIP";
+            }
+        } else {
+            return "Patient Not a Found";
+        }
+    },
+    //Calculate the patient's age.
+    calage: function(id) {
+        var patient = new GlideRecord('u_patient_record');
+        patient.addQuery('u_number', id);
+        patient.query();
+        if (patient.next()) {
+            var age = gs.dateDiff(patient.u_date_of_birth, gs.now(), true);
+            var ageInYears = Math.floor(parseInt(age) / (60 * 60 * 24 * 365));
+            return ageInYears;
+
+        } else {
+            return "Record not found"
+        }
+
+    },
+    //Fetch patient's appointments.
+    patientappointment: function(id) {
+        var appointment = new GlideRecord('u_appointment');
+        appointment.addQuery('u_patient_id', id);
+        appointment.query();
+        return appointment;
+    },
+    //Fetch patient's medications.
+    patientmedication: function(id) {
+        var med = new GlideRecord('u_medication');
+        med.addQuery('u_patient_id', id);
+        med.query();
+        return med;
+    },
+    //Fetch patient's lab tests. 
+    patientlabtest: function(id) {
+        var test = new GlideRecord('u_lab_test');
+        test.addQuery('u_patient_id', id);
+        test.query();
+        return test;
+    },
+	//Fetch patient's billing records.
+	patientbillingrecords: function(id) {
+        var bill = new GlideRecord('u_billing');
+        bill.addQuery('u_patient_id', id);
+        bill.query();
+        return bill;
+    }, 
+	//Fetch patient's insurance policies. 
+	
+
+
+    type: 'PatientUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 17:57:27</sys_created_on>
+        <sys_id>f6f05cb293ee2210ec38b2ddfaba10be</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>PatientUtils</sys_name>
+        <sys_package display_value=" Healthcare Management " source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management ">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_include_f6f05cb293ee2210ec38b2ddfaba10be</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 20:17:44</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>f6f05cb293ee2210ec38b2ddfaba10be</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-08 17:57:27</sys_created_on>
+        <sys_id>1df3d0b693ee2210ec38b2ddfaba10d2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-08 17:57:27</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
