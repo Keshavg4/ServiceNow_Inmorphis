@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>global.InsuranceUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>InsuranceUtils</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var InsuranceUtils = Class.create();
+InsuranceUtils.prototype = {
+    initialize: function() {},
+
+    sys: function(id) {
+        var pat = new GlideRecord('u_patient_record');
+        pat.addQuery('u_number', id);
+        pat.query();
+        pat.next();
+        var sys = pat.getUniqueValue();
+        return sys;
+    },
+    //Fetch insurance details by patient ID.
+    fetchinsurancedetailpatientid: function(id) {
+        var sysid = this.sys(id);
+        var insurance = new GlideRecord('u_insurance');
+        insurance.addQuery('u_patient_id', sysid);
+        insurance.query();
+        return insurance;
+    },
+    //Check if an insurance policy is active. 
+    checkactive: function(id) {
+        var insurance = new GlideRecord('u_insurance');
+        insurance.addQuery('number', id);
+        insurance.query()
+        if (insurance.next()) {
+            if (insurance.u_status == 'active') {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return "Record Not Found";
+        }
+    },
+    //Fetch insurance policy by ID.
+    fetchdetails: function(id) {
+        var ins = new GlideRecord('u_insurance');
+        ins.addQuery('number', id);
+		ins.query();
+        return ins;
+
+    },
+	//Fetch insurance policies by provider
+	fetchbyprovider:function(providername)
+	{
+		var pro = new GlideRecord('u_insurance');
+		pro.addQuery('u_provider',providername);
+		pro.query();
+		return pro;
+	},
+
+
+
+
+    type: 'InsuranceUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 02:38:08</sys_created_on>
+        <sys_id>a729cebe93e66210ec38b2ddfaba105a</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>InsuranceUtils</sys_name>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_include_a729cebe93e66210ec38b2ddfaba105a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 10:47:30</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>a729cebe93e66210ec38b2ddfaba105a</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 02:38:07</sys_created_on>
+        <sys_id>902b8e7e93e66210ec38b2ddfaba1011</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 02:38:07</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

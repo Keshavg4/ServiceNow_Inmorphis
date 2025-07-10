@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>global.LabTestUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>LabTestUtils</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var LabTestUtils = Class.create();
+LabTestUtils.prototype = {
+    initialize: function() {},
+	sys: function(id) {
+        var pat = new GlideRecord('u_patient_record');
+        pat.addQuery('u_number', id);
+        pat.query();
+        pat.next();
+        var sys = pat.getUniqueValue();
+        return sys;
+    },
+    fetchTestResultsById: function(id) {
+        var _results = new GlideRecord('u_lab_test');
+        _results.addQuery('number', id);
+        _results.query();
+        if (_results.next()) {
+            return "Result = " + _results.u_results;
+        }
+
+    },
+
+    fetchTestResultsStatus: function(id) {
+        var _status = new GlideRecord('u_lab_test');
+        _status.addQuery('number', id);
+        _status.query();
+        if (_status.next()) {
+            return "Results are = " + _status.u_status;
+        }
+
+    },
+
+    fetchLabTestById: function(patientid) {
+		var sysid= this.sys(patientid)
+        var _test = new GlideRecord('u_lab_test');
+        _test.addQuery('u_patient_id', sysid);
+        _test.query();
+        while (_test.next()) {
+            return _test;
+        }
+
+    },
+
+    fetchLabTestByDate: function(dateStr) {
+        var _date = new GlideRecord('u_lab_test');
+        _date.addQuery('u_schedule_date', 'CONTAINS', dateStr);
+        _date.query();
+        while (_date.next()) {
+            return _date;
+        }
+    },
+
+    type: 'LabTestUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 04:35:40</sys_created_on>
+        <sys_id>6c65ee3e936a6210ec38b2ddfaba1010</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>LabTestUtils</sys_name>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_include_6c65ee3e936a6210ec38b2ddfaba1010</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 04:53:13</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>6c65ee3e936a6210ec38b2ddfaba1010</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 04:35:39</sys_created_on>
+        <sys_id>420622fe936a6210ec38b2ddfaba1064</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 04:35:39</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

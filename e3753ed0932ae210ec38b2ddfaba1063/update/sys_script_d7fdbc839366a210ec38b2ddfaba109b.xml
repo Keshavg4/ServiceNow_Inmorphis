@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>u_appointment</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Appointment_BR</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+    // Add your code here
+    var _apptDetails = new AppointmentUtils();
+
+
+    var _patinetAppt = _apptDetails.getAllAppointmentForPatient('0214c8f093626610ec38b2ddfaba105e')
+    if (!_patinetAppt.hasNext()) {
+        gs.print("No appointments found for patient.");
+    } else {
+        while (_patinetAppt.next()) {
+            gs.print("-----Appointment-----")
+            gs.print("Appointment Date: " + _patinetAppt.u_appointment_date);
+            gs.print("Doctor: " + _patinetAppt.u_doctor.getDisplayValue());
+            gs.print("Status: " + _patinetAppt.u_statis);
+            gs.print("-----");
+        }
+    }
+
+    var _checkStatus = _apptDetails.getConfirmedAppointment('APT0001107');
+    gs.print(_checkStatus);
+    gs.print("------")
+
+    var _appointDetails = _apptDetails.getAppointmentDetailsByID('APT0001107');
+    gs.print("-----Appointment Details-----")
+    gs.print("Appointment Date: " + _appointDetails.u_appointment_date);
+    gs.print("Doctor: " + _appointDetails.u_doctor.getDisplayValue());
+    gs.print("Status: " + _appointDetails.u_statis);
+    gs.print("-----");
+
+    var _appointDetailsByDate = _apptDetails.getAppointmentDetailsByDate('2025-07-27');
+    gs.print("-----Appointment Details By Date-----");
+    gs.print("Appointment ID: " + _appointDetailsByDate.number);
+    gs.print("Doctor: " + _appointDetailsByDate.u_doctor.getDisplayValue());
+    gs.print("Status: " + _appointDetailsByDate.u_statis);
+    gs.print("------------------");
+
+
+    var _appointDetailsByDepartment = _apptDetails.getAppointmentDetailsByDepartment('Pediatrics')
+    if (!_appointDetailsByDepartment.hasNext()) {
+        gs.print("No appointment found for that department.");
+    } else {
+        while (_appointDetailsByDepartment.next()) {
+            gs.print("-----Appointment Details By Department-----")
+            gs.print("Appointment ID: " + _appointDetailsByDepartment.number);
+            gs.print("Doctor: " + _appointDetailsByDepartment.u_doctor.getDisplayValue());
+            gs.print("Status: " + _appointDetailsByDepartment.u_status);
+            gs.print("-----");
+        }
+    }
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 15:40:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d7fdbc839366a210ec38b2ddfaba109b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Appointment_BR</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_d7fdbc839366a210ec38b2ddfaba109b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 15:40:13</sys_updated_on>
+        <template/>
+        <when>before_display</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=d7fdbc839366a210ec38b2ddfaba109b"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>d7fdbc839366a210ec38b2ddfaba109b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 15:40:12</sys_created_on>
+        <sys_id>202efc039366a210ec38b2ddfaba10d1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 15:40:12</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

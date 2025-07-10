@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>u_patient_record</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Patient_BR</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+    // Add your code here
+    var _patientDetails = new PatientUtils();
+
+    var _patientInfo = _patientDetails.fetchAllPatientDetailsByPatientId('PAT0001027');
+    gs.print(_patientInfo.u_first_name + ' ' + _patientInfo.u_last_name);
+
+    var checkVip = _patientDetails.checkIfPatientIsVip('PAT0001027');
+    gs.print(checkVip);
+
+    var patientAge = _patientDetails.calculatePatientAge('PAT0001027');
+    gs.print(patientAge);
+
+    var _patinetAppt = _patientDetails.fetchPatientAppointments('0214c8f093626610ec38b2ddfaba105e')
+    if (!_patinetAppt.hasNext()) {
+        gs.print("No appointments found for patient.");
+    } else {
+        while (_patinetAppt.next()) {
+            gs.print("-----Appointment-----")
+            gs.print("Appointment Date: " + _patinetAppt.u_appointment_date);
+            gs.print("Doctor: " + _patinetAppt.u_doctor.getDisplayValue());
+            gs.print("Status: " + _patinetAppt.u_statis);
+            gs.print("-----");
+        }
+    }
+
+    var _patientMedication = _patientDetails.fetchPatientMedications('0214c8f093626610ec38b2ddfaba105e');
+    if (!_patientMedication.hasNext()) {
+        gs.print("No medication found for patient.");
+    } else {
+        while (_patientMedication.next()) {
+            gs.print("-----Medication-----")
+            gs.print("Medication Date: " + _patientMedication.u_medication_name);
+            gs.print("Dosage: " + _patientMedication.u_dosage);
+            gs.print("frequency: " + _patientMedication.u_frequency);
+            gs.print("-----");
+        }
+    }
+
+
+    var _patientLabTest = _patientDetails.fetchPatientLabTest('0214c8f093626610ec38b2ddfaba105e');
+    if (!_patientLabTest.hasNext()) {
+        gs.print("No Lab Test found for patient.");
+    } else {
+        while (_patientLabTest.next()) {
+            gs.print("-----LabTest-----")
+            gs.print("Scheduled Date: " + _patientLabTest.u_scheduled_date);
+            gs.print("Status: " + _patientLabTest.u_status);
+            gs.print("Test Type: " + _patientLabTest.u_test_type);
+            gs.print("-----");
+        }
+    }
+
+    var _patientBilling = _patientDetails.fetchPatientBillingRecord('0214c8f093626610ec38b2ddfaba105e')
+    if (!_patientBilling.hasNext()) {
+        gs.print("No Biiling Record found for patient.");
+    } else {
+        while (_patientBilling.next()) {
+            gs.print("-----Billing-----")
+            gs.print("Total Ammount: " + _patientBilling.u_total_ammount);
+            gs.print("Status: " + _patientBilling.u_status);
+            gs.print("Appointment ID: " + _patientBilling.number.getDisplayValue());
+            gs.print("-----");
+        }
+    }
+
+
+    var _patientInsurance = _patientDetails.fetchPatientInsurancePolicies('0214c8f093626610ec38b2ddfaba105e');
+    if (!_patientInsurance.hasNext()) {
+        gs.print("No Insurance found for patient.");
+    } else {
+        while (_patientInsurance.next()) {
+            gs.print("-----Insurance-----")
+            gs.print("Provider: " + _patientInsurance.u_provider);
+            gs.print("Status: " + _patientInsurance.u_status);
+            gs.print("Policy Number" + _patientInsurance.u_policy_number);
+            gs.print("-----");
+        }
+    }
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 15:54:59</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>713189879366a210ec38b2ddfaba1068</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Patient_BR</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_713189879366a210ec38b2ddfaba1068</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 15:54:59</sys_updated_on>
+        <template/>
+        <when>before_display</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=713189879366a210ec38b2ddfaba1068"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>713189879366a210ec38b2ddfaba1068</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 15:54:58</sys_created_on>
+        <sys_id>788189879366a210ec38b2ddfaba10b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 15:54:58</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

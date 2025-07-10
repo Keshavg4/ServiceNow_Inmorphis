@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>u_billing</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Billing_BR</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+    // Add your code here
+    var billing = new BillingUtils();
+
+    var total = billing.getTotalBillingAmount('681e5e68936a2610ec38b2ddfaba109e');
+    gs.print('Total Billing Amount: ₹' + total.u_total_amount);
+
+
+    var isOverdue = billing.isBillingOverdue('681e5e68936a2610ec38b2ddfaba109e');
+    if (isOverdue) {
+        gs.print('Bill is overdue')
+    } else {
+        gs.print('Bill is clear')
+    }
+
+    var billdetail = billing.getBillingByID('BLG0001033');
+    if (billdetail) {
+        gs.print("Total Amount: " + billdetail.u_total_amount);
+        gs.print("Patient ID: " + billdetail.u_patient_id.getDisplayValue());
+        gs.print("Status: " + billdetail.u_status);
+    } else {
+        gs.print("No billing record found.");
+    }
+
+
+    var bills = billing.getBillingByPatientID('681e5e68936a2610ec38b2ddfaba109e');
+
+    while (bills.next()) {
+        gs.print('₹' + bills.u_total_amount + ' | Billing ID: ' + bills.number);
+    }
+
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 10:26:14</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c126f7be93ee6210ec38b2ddfaba107f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Billing_BR</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_c126f7be93ee6210ec38b2ddfaba107f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 10:26:14</sys_updated_on>
+        <template/>
+        <when>before_display</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=c126f7be93ee6210ec38b2ddfaba107f"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>c126f7be93ee6210ec38b2ddfaba107f</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 10:26:14</sys_created_on>
+        <sys_id>6946f3fe93ee6210ec38b2ddfaba106b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 10:26:14</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

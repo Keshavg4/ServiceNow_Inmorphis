@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>u_insurance</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Insurance_BR</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+    // Add your code here
+    var insu = new InsuranceUtils()
+
+    var insurance = insu.fetchinsurancedetailpatientid('PAT0001093');
+    if (insurance.next()) {
+        gs.print('Insurance ID: ' + insurance.number);
+        gs.print("Status: " + insurance.u_status);
+        gs.print("Covers: " + insurance.u_coverage_details);
+        gs.print("-----------")
+    } else {
+        gs.print("NO Record")
+    }
+
+    var active = insu.checkactive('INS0001028');
+    gs.print("Status is Active: " + active);
+    gs.print("-----------------")
+
+    var fetchbyinsid = insu.fetchdetails('INS0001028')
+    while (fetchbyinsid.next()) {
+        gs.print("Insurance ID: " + fetchbyinsid.number.getDisplayValue());
+        gs.print("PAtient ID: " + fetchbyinsid.u_patient_id.getDisplayValue());
+        gs.print("Covers: " + fetchbyinsid.u_coverage_details);
+        gs.print("Status: " + fetchbyinsid.u_status);
+        //gs.print("-----------")
+
+    }
+
+    var byprovider = insu.fetchbyprovider('Star Health');
+    gs.print("---Through Provider----")
+    var count = 0;
+    while (byprovider.next()) {
+        gs.print("Count Number: " + count);
+        gs.print("Insurance ID: " + byprovider.number.getDisplayValue());
+        gs.print("PAtient ID: " + byprovider.u_patient_id.getDisplayValue());
+        gs.print("Covers: " + byprovider.u_coverage_details);
+        gs.print("Status: " + byprovider.u_status);
+        gs.print("-----------")
+        count += 1;
+    }
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 10:53:39</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>733c3f369322a210ec38b2ddfaba1071</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Insurance_BR</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_733c3f369322a210ec38b2ddfaba1071</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 10:53:39</sys_updated_on>
+        <template/>
+        <when>before_display</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=733c3f369322a210ec38b2ddfaba1071"/>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>733c3f369322a210ec38b2ddfaba1071</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 10:53:38</sys_created_on>
+        <sys_id>c38cf7769322a210ec38b2ddfaba10dc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 10:53:38</sys_updated_on>
+        <table>sys_script</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>global.PatientUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>PatientUtils</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var PatientUtils = Class.create();
+PatientUtils.prototype = {
+    initialize: function() {},
+
+    fetchAllPatientDetailsByPatientId: function(id) {
+        var patient = new GlideRecord('u_patient_record');
+        patient.addQuery('u_number', id);
+        patient.query();
+        if (patient.next()) {
+            return patient;
+        } else {
+            return null;
+        }
+    },
+
+    checkIfPatientIsVip: function(id) {
+        var patient = new GlideRecord('u_patient_record');
+        patient.get(id)
+        if (patient.u_vip) {
+            return "Patient Is VIP.";
+        } else {
+            return "Patient is not VIP"
+        }
+    },
+
+    calculatePatientAge: function(id) {
+        var patient = new GlideRecord('u_patient_record');
+        patient.addQuery('u_number', id);
+        patient.query();
+        if (patient.next()) {
+            var age = gs.dateDiff(patient.u_date_of_birth, gs.now(), true);
+            return Math.floor(age / (24 * 60 * 60 * 365));
+        } else {
+            return "Patient not found."
+        }
+
+    },
+
+    fetchPatientAppointments: function(patientid) {
+        var appoint = new GlideRecord('u_appointment');
+        appoint.addQuery('u_patient_id', patientid);
+        appoint.query();
+        return appoint;
+    },
+
+
+    fetchPatientMedications: function(patientid) {
+        var medicine = new GlideRecord('u_medication');
+        medicine.addQuery('u_patient_id', patientid);
+        medicine.query();
+        return medicine;
+    },
+
+    fetchPatientLabTest: function(patientid) {
+        var labTest = new GlideRecord('u_lab_test');
+        labTest.addQuery('u_patient_id', patientid);
+        labTest.query();
+        return labTest;
+    },
+
+    fetchPatientBillingRecord: function(patientid) {
+        var bill = new GlideRecord('u_billing');
+        bill.addQuery('u_patient_id', patientid);
+        bill.query();
+        return bill;
+    },
+
+    fetchPatientInsurancePolicies: function(patientid) {
+        var insurance = new GlideRecord('u_insurance');
+        insurance.addQuery('u_patient_id', patientid);
+        insurance.query();
+        return insurance;
+    },
+
+
+    type: 'PatientUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 15:47:10</sys_created_on>
+        <sys_id>1a4e788f9326a210ec38b2ddfaba1046</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>PatientUtils</sys_name>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sys_script_include_1a4e788f9326a210ec38b2ddfaba1046</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 15:49:51</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>1a4e788f9326a210ec38b2ddfaba1046</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-09 15:47:10</sys_created_on>
+        <sys_id>e2bf7c039366a210ec38b2ddfaba10e7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-09 15:47:10</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
