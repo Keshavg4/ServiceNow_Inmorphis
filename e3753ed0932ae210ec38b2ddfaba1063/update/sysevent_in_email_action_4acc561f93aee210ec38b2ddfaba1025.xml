@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_in_email_action">
+    <sysevent_in_email_action action="INSERT_OR_UPDATE">
+        <action>record_action</action>
+        <active>true</active>
+        <assignment_operator/>
+        <condition_script/>
+        <description/>
+        <event_name>email.read</event_name>
+        <filter_condition table="sys_email">subjectLIKEAppointment Request^EQ<item endquery="false" field="subject" goto="false" newquery="false" operator="LIKE" or="false" value="Appointment Request"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <from/>
+        <name>Appointment Requests</name>
+        <order>-100</order>
+        <reply_email/>
+        <required_roles/>
+        <script><![CDATA[(function runAction(current, event, email, logger, classifier) {
+    var lines = email.body_text.toString().split('\n');
+    var patientId, doctorId, apptDate, department;
+
+    lines.forEach(function(line) {
+        line = line.trim();
+        if (line.startsWith("Patient ID:")) patientId = line.split("Patient ID:")[1].trim();
+        if (line.startsWith("Doctor ID:")) doctorId = line.split("Doctor ID:")[1].trim();
+        if (line.startsWith("Date:")) apptDate = line.split("Date:")[1].trim();
+        if (line.startsWith("Department:")) department = line.split("Department:")[1].trim();
+    });
+
+    // Validate required fields
+    if (!patientId || !doctorId || !apptDate || !department) {
+        gs.error("Missing required fields in the email body.");
+        return;
+    }
+
+    // Look up Patient
+    var patientGR = new GlideRecord('u_patient_record');
+    patientGR.addQuery('u_number', patientId);
+    patientGR.query();
+    if (!patientGR.next()) {
+        gs.error("Patient not found for ID: " + patientId);
+        return;
+    }
+
+    // Look up Doctor
+    var doctorGR = new GlideRecord('u_doctor_record');
+    doctorGR.addQuery('number', doctorId);
+    doctorGR.query();
+    if (!doctorGR.next()) {
+        gs.error("Doctor not found for ID: " + doctorId);
+        return;
+    }
+
+    // Create Appointment
+    var appt = new GlideRecord('u_appointment');
+    appt.initialize();
+    appt.u_patient_id = patientGR.sys_id;
+    appt.u_doctor_id = doctorGR.sys_id;
+    appt.u_appointment_date = apptDate;
+    appt.u_department = department;
+    //appt.u_statis = 'Scheduled'; // Set default status
+    appt.short_description = email.subject || 'Scheduled via Email';
+    appt.insert();
+
+    // Associate email with record
+    sys_email.instance = appt.sys_id;
+    sys_email.target_table = appt.getTableName();
+    event.state = 'stop_processing';
+
+    gs.info("Appointment created successfully for Patient: " + patientId + ", Doctor: " + doctorId);
+})(current, event, email, logger, classifier);]]></script>
+        <stop_processing>false</stop_processing>
+        <sys_class_name>sysevent_in_email_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-10 18:20:52</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4acc561f93aee210ec38b2ddfaba1025</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Appointment Requests</sys_name>
+        <sys_overrides/>
+        <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
+        <sys_policy/>
+        <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
+        <sys_update_name>sysevent_in_email_action_4acc561f93aee210ec38b2ddfaba1025</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-11 05:41:30</sys_updated_on>
+        <table>u_appointment</table>
+        <template/>
+        <type>new</type>
+    </sysevent_in_email_action>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>4acc561f93aee210ec38b2ddfaba1025</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-07-10 18:20:47</sys_created_on>
+        <sys_id>b27c2a5f93aee210ec38b2ddfaba106e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-07-10 18:20:47</sys_updated_on>
+        <table>sysevent_in_email_action</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

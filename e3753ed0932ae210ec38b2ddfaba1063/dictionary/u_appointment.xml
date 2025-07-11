@@ -8,21 +8,21 @@
         <element label="Doctor Contact Number" mandatory="true" max_length="40" name="u_doctor_contact_number" type="integer"/>
         <element attributes="edge_encryption_enabled=true" choice="1" label="Department" mandatory="true" max_length="40" name="u_department" type="string">
             <choice>
-                <element inactive_on_update="false" label="General Medicine" sequence="0" value="general_medicine"/>
-                <element inactive_on_update="false" label="Pediatrics" sequence="2" value="pediatrics"/>
                 <element inactive_on_update="false" label="Cardiology" sequence="1" value="cardiology"/>
+                <element inactive_on_update="false" label="Pediatrics" sequence="2" value="pediatrics"/>
+                <element inactive_on_update="false" label="General Medicine" sequence="0" value="general_medicine"/>
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" label="Work Notes" max_length="4000" name="u_work_notes" type="journal"/>
         <element attributes="encode_utf8=false" label="Office Location" mandatory="true" max_length="32" name="u_office_location" reference="u_doctor" type="reference"/>
         <element attributes="encode_utf8=false" label="Medication Name" mandatory="true" max_length="32" name="u_medication_name" reference="u_medication" type="reference"/>
-        <element attributes="edge_encryption_enabled=true" choice="1" label="Status" mandatory="true" max_length="40" name="u_statis" type="string">
+        <element attributes="edge_encryption_enabled=true" choice="1" default="Scheduled" label="Status" mandatory="true" max_length="40" name="u_statis" type="string">
             <choice>
-                <element inactive_on_update="false" label="Confirmed" sequence="1" value="confirmed"/>
-                <element inactive_on_update="false" label="Cancelled" sequence="3" value="cancelled"/>
                 <element inactive_on_update="false" label="Completed" sequence="2" value="completed"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="3" value="cancelled"/>
                 <element inactive_on_update="false" label="Scheduled" sequence="0" value="scheduled"/>
                 <element inactive_on_update="false" label="New" sequence="4" value="new"/>
+                <element inactive_on_update="false" label="Confirmed" sequence="1" value="confirmed"/>
             </choice>
         </element>
     </element>
