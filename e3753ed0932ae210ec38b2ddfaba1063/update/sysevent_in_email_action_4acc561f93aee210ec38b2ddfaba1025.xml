@@ -15,67 +15,77 @@
         <reply_email/>
         <required_roles/>
         <script><![CDATA[(function runAction(current, event, email, logger, classifier) {
-    var lines = email.body_text.toString().split('\n');
-    var patientId, doctorId, apptDate, department;
-
-    lines.forEach(function(line) {
-        line = line.trim();
-        if (line.startsWith("Patient ID:")) patientId = line.split("Patient ID:")[1].trim();
-        if (line.startsWith("Doctor ID:")) doctorId = line.split("Doctor ID:")[1].trim();
-        if (line.startsWith("Date:")) apptDate = line.split("Date:")[1].trim();
-        if (line.startsWith("Department:")) department = line.split("Department:")[1].trim();
-    });
-
-    // Validate required fields
-    if (!patientId || !doctorId || !apptDate || !department) {
-        gs.error("Missing required fields in the email body.");
-        return;
+ 
+    try {
+ 
+        var emailBody = email.body_text || '';
+ 
+        var patientIdMatch = emailBody.match(/Patient ID:\s*(PAT\d+)/);
+ 
+        var appointmentDateMatch = emailBody.match(/Appointment Date:\s*(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2}:\d{2})/);
+ 
+        var departmentMatch = emailBody.match(/Department:\s*(.+)/); // now supports multiple words
+ 
+        var patientId = patientIdMatch ? patientIdMatch[1] : null;
+ 
+        var appointmentDate = appointmentDateMatch ? (appointmentDateMatch[1] + ' ' + appointmentDateMatch[2]) : null;
+ 
+        var department = departmentMatch ? departmentMatch[1].trim() : null;
+ 
+        if (!patientId || !appointmentDate || !department) {
+ 
+            throw new Error("Missing required appointment data in the email body.");
+ 
+        }
+ 
+        var patient = new GlideRecord('u_patient_record');
+ 
+        patient.addQuery('u_number', patientId);
+ 
+        patient.query();
+ 
+        if (!patient.next()) {
+ 
+            gs.error("Patient not found for ID: " + patientId);
+ 
+            return;
+ 
+        }
+ 
+        var newAppointment = new GlideRecord('u_appointment');
+ 
+        newAppointment.initialize();
+ 
+        newAppointment.u_patient_id = patient.sys_id; // Reference field to patient table
+ 
+        newAppointment.u_appointment_date = appointmentDate;
+ 
+        newAppointment.u_department = department;
+ 
+        //newAppointment.u_status = 'Scheduled';
+ 
+        newAppointment.insert();
+ 
+        logger.log('Appointment successfully created for Patient ID: ' + patientId);
+ 
+        gs.info("Appointment created for patient ID: " + patientId);
+ 
+    } catch (e) {
+ 
+        gs.error("Error processing email: " + e.message);
+ 
     }
-
-    // Look up Patient
-    var patientGR = new GlideRecord('u_patient_record');
-    patientGR.addQuery('u_number', patientId);
-    patientGR.query();
-    if (!patientGR.next()) {
-        gs.error("Patient not found for ID: " + patientId);
-        return;
-    }
-
-    // Look up Doctor
-    var doctorGR = new GlideRecord('u_doctor_record');
-    doctorGR.addQuery('number', doctorId);
-    doctorGR.query();
-    if (!doctorGR.next()) {
-        gs.error("Doctor not found for ID: " + doctorId);
-        return;
-    }
-
-    // Create Appointment
-    var appt = new GlideRecord('u_appointment');
-    appt.initialize();
-    appt.u_patient_id = patientGR.sys_id;
-    appt.u_doctor_id = doctorGR.sys_id;
-    appt.u_appointment_date = apptDate;
-    appt.u_department = department;
-    //appt.u_statis = 'Scheduled'; // Set default status
-    appt.short_description = email.subject || 'Scheduled via Email';
-    appt.insert();
-
-    // Associate email with record
-    sys_email.instance = appt.sys_id;
-    sys_email.target_table = appt.getTableName();
-    event.state = 'stop_processing';
-
-    gs.info("Appointment created successfully for Patient: " + patientId + ", Doctor: " + doctorId);
-})(current, event, email, logger, classifier);]]></script>
-        <stop_processing>false</stop_processing>
+ 
+})(current, event, email, logger, classifier);
+ ]]></script>
+        <stop_processing>true</stop_processing>
         <sys_class_name>sysevent_in_email_action</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2025-07-10 18:20:52</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4acc561f93aee210ec38b2ddfaba1025</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>Appointment Requests</sys_name>
         <sys_overrides/>
         <sys_package display_value=" Healthcare Management Application" source="e3753ed0932ae210ec38b2ddfaba1063">e3753ed0932ae210ec38b2ddfaba1063</sys_package>
@@ -83,7 +93,7 @@
         <sys_scope display_value=" Healthcare Management Application">e3753ed0932ae210ec38b2ddfaba1063</sys_scope>
         <sys_update_name>sysevent_in_email_action_4acc561f93aee210ec38b2ddfaba1025</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-07-11 05:41:30</sys_updated_on>
+        <sys_updated_on>2025-07-11 11:51:55</sys_updated_on>
         <table>u_appointment</table>
         <template/>
         <type>new</type>
