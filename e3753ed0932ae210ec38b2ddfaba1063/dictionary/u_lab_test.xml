@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="attachment_index=None,no_attachment=true" audit="true" db_object_id="d9f51fdc93aae210ec38b2ddfaba1001" extends="task" label="Lab Test" max_length="40" name="u_lab_test" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Results" mandatory="true" max_length="1000" name="u_results" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Work Notes" max_length="4000" name="u_work_notes" type="journal"/>
+        <element attributes="edge_encryption_enabled=true" label="Schedule Date" mandatory="true" max_length="40" name="u_schedule_date" type="glide_date_time"/>
+        <element attributes="encode_utf8=false" label="Doctor Name" mandatory="true" max_length="32" name="u_doctor_name" reference="u_doctor" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Test Type" mandatory="true" max_length="40" name="u_test_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="X-Ray" sequence="2" value="x_ray"/>
+                <element inactive_on_update="false" label="Blood Test" sequence="0" value="blood_test"/>
+                <element inactive_on_update="false" label="Urine Test" sequence="1" value="urine_test"/>
+                <element inactive_on_update="false" label="MRI" sequence="3" value="mri"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,default=Scheduled" choice="1" default="Scheduled" label="Status" mandatory="true" max_length="40" name="u_status" reference_qual="null" reference_qual_condition="null" type="string">
+            <choice>
+                <element inactive_on_update="false" label="New" sequence="4" value="new"/>
+                <element inactive_on_update="false" label="In Progress" sequence="3" value="in_progress"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="2" value="cancelled"/>
+                <element inactive_on_update="false" label="Scheduled" sequence="0" value="scheduled"/>
+                <element inactive_on_update="false" label="Completed" sequence="1" value="completed"/>
+            </choice>
+        </element>
+        <element attributes="encode_utf8=false" label="Patient ID" mandatory="true" max_length="32" name="u_patient_id" reference="u_patient_record" type="reference"/>
+    </element>
+</database>
